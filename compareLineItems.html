@@ -1,0 +1,93 @@
+<template>
+    <lightning-card title="Compare the Line items">
+        <lightning-layout>
+        <lightning-layout-item size="5" padding="around medium">
+
+        
+            <div class="slds-p-left_large">
+                    
+            <lightning-combobox 
+                     placeholder="Select a Quote/Proposal"
+                     value={value}
+                     options={options}
+                     onchange={UpdateLeftValues}>
+          </lightning-combobox>
+        
+        
+             <template if:true={cardVisible}>
+                   
+                <lightning-card title="Line items">
+                    <lightning-datatable label="Related Line Items List"
+                                         key-field="id"
+                                         data={dataLeft}
+                                         columns={columnsField}>
+                    </lightning-datatable>
+                </lightning-card>
+
+             </template>  
+            
+            
+        </div> 
+    </lightning-layout-item>
+    
+
+       
+<lightning-layout-item size="5" padding="around medium">
+            <div class="slds-p-left_large">
+                    
+            <lightning-combobox 
+                     placeholder="Select a Quote/Proposal"
+                     value={value}
+                     options={options}
+                     onchange={UpdateRightValues}>
+                    
+          </lightning-combobox>
+        
+        
+             <template if:true={cardVisible}>
+                   
+                <lightning-card title="Line items 2">
+                    <lightning-datatable label="Related Line Items List"
+                                         key-field="id"
+                                         data={dataRight}
+                                         columns={columnsData}>
+                    </lightning-datatable>
+                </lightning-card>
+
+             </template>  
+            
+            </div>  
+     
+
+    </lightning-layout-item>
+</lightning-layout>
+
+
+
+<!-- <div class="slds-p-top_medium">
+    <lightning-button variant="brand" 
+                      label="Generate CSV" 
+                      onclick={csvGenerator} >
+                     
+                    
+                      
+   </lightning-button>
+</div> -->
+  
+<div class="slds-p-top_medium">
+    <div class="slds-align_absolute-center">
+    <lightning-button variant="brand" 
+                      label="Compare" 
+                      title="Primary action" 
+                      onclick={handleCompare} >
+                    
+                      
+   </lightning-button>
+
+                </div>
+            </div>
+
+                <a class="slds-button" download="ExportToCSV.csv" href={hrefdata} onclick={exportToCSV}  
+     style="margin-left: 80%;">Download Excel</a>
+    </lightning-card>
+ </template>
