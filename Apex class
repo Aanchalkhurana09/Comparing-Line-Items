@@ -1,0 +1,22 @@
+public class getProposals {
+     @AuraEnabled
+    public static List<Proposal__c> getProposalList(Id lwcRecordId){
+        List<Proposal__c> ProposalSearchList = [Select Id, Name, Opportunity__c From Proposal__c
+                                                 Where Opportunity__c=:lwcRecordId];
+        return ProposalSearchList;
+    }
+    
+    @AuraEnabled
+       public static List<Line_Item__c> getLineItems(Id selectedProposal){
+            List<Line_Item__c> LineItemList = [Select id,name,BasePrice__c,Proposal__c,Acceptance_Date__c
+                                              FROM Line_Item__c 
+                                               where Proposal__c=:selectedProposal];
+                system.debug(+LineItemList);
+           return LineItemList;
+       }
+    
+    
+    
+    
+   
+}
